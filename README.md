@@ -7,44 +7,52 @@ Behold My Awesome Project!
 
 License: MIT
 
-## Settings
-
-Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
 
 ## Basic Commands
 
 ### Setting Up Your Users
 
--   To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
-
 -   To create a **superuser account**, use this command:
 
         $ python manage.py createsuperuser
 
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
+## How to run it:
 
-### Type checks
+Start Postrgresql: 
 
-Running type checks with mypy:
+On lixux:
+        
+        sudo su postgres
+        psql
 
-    $ mypy drftoken
+Rise a database called : drftoken
 
-### Test coverage
+        CREATE DATABASE drftoken WITH OWNER postgres ENCODING 'UTF8';
+        GRANT ALL PRIVILEGES ON DATABASE drftoken TO postgres;
 
-To run the tests, check your test coverage, and generate an HTML coverage report:
+Start a virtual environment, go to the project folder and run:
 
-    $ coverage run -m pytest
-    $ coverage html
-    $ open htmlcov/index.html
+        pip install -r requeriments/local.py
 
-#### Running tests with pytest
+Migrate
 
-    $ pytest
+        python3 manage.py migrate
 
-### Live reloading and Sass CSS compilation
+Create a Superuser:
 
-Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/developing-locally.html#sass-compilation-live-reloading).
+        python3 manage.py createsuperuser
 
-## Deployment
+Run the server and have fun on http://localhost:8000 !:
 
-The following details how to deploy this application.
+        python3 manage.py runserver
+
+
+Use Postman to send a HTTP POST Request with body content:
+
+                KEY             VALUE
+                username        <yoursuperuser>
+                password        <yoursuperuserpass>
+
+to:
+
+                http://localhost:8000/api/v1/

@@ -34,4 +34,5 @@ urlpatterns = [
         views.DeleteChoiceAPIView.as_view(),
         name="delete-choice",
     ),
+    path('', views.Login.as_view(), name="login" ),
 ]
